@@ -3,111 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AttendanceTracker - Smart Attendance Calculator</title>
+    <title>Attendance Calculator</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <h2>AttendanceTracker.</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#calculator" class="nav-link">Calculator</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <div class="container">
+        <header>
+            <h1>Attendance Calculator</h1>
+        </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-left">
-                    <div class="hero-intro">
-                        <span class="intro-label">SMART TRACKING</span>
-                    </div>
-                    <h1 class="hero-title">
-                        Calculate Smart<br>
-                        <span class="highlight">Attendance.</span>
-                    </h1>
-                    <p class="hero-description">
-                        Track your attendance with precision. Calculate exactly how many 
-                        classes you need to attend to reach your target percentage. 
-                        Simple, smart, and effective attendance management.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="#calculator" class="btn-primary">Start Calculating</a>
-                        <div class="hero-arrow">→</div>
-                    </div>
-                </div>
-                <div class="hero-right">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">99.9%</div>
-                            <div class="stat-label">Accuracy</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">10k+</div>
-                            <div class="stat-label">Students helped</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Available</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Choose Our Calculator</h2>
-                <p>Designed with students in mind</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Real-time Calculation</h3>
-                    <p>Get instant results with precise attendance calculations and target planning.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Target Planning</h3>
-                    <p>Set your attendance goals and know exactly how many classes you need to attend.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile Friendly</h3>
-                    <p>Access your attendance calculator anywhere, anytime on any device.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section id="calculator" class="calculator-section">
-        <div class="container">
-            <div class="calculator-header">
-                <h2>Attendance Calculator</h2>
-                <p>Calculate your attendance and plan ahead</p>
-            </div>
-            
+        <main class="calculator-section">
             <div class="calculator-container">
                 <div class="calculator-form">
                     <div class="input-group">
@@ -134,10 +39,8 @@
                 <div id="result" class="result-container" style="display: none;">
                     <div class="result-header">
                         <div class="current-percentage" id="currentPercentage"></div>
-                        <div class="progress-circle">
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="progressFill"></div>
-                            </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
                         </div>
                     </div>
                     <div class="result-content">
@@ -146,68 +49,35 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Built for Students</h2>
-                    <p>
-                        Our attendance calculator was created to help students manage their 
-                        academic attendance requirements effectively. Whether you're trying 
-                        to maintain the minimum attendance percentage or aiming for perfect 
-                        attendance, our tool provides accurate calculations and actionable insights.
-                    </p>
-                    <div class="about-features">
-                        <div class="about-feature">
-                            <span>✓</span>
-                            <span>Precise calculations</span>
-                        </div>
-                        <div class="about-feature">
-                            <span>✓</span>
-                            <span>Future planning</span>
-                        </div>
-                        <div class="about-feature">
-                            <span>✓</span>
-                            <span>Easy to use</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Contact Window -->
+    <div class="contact-window" id="contactWindow">
+        <div class="contact-header">
+            <h3>Contact Us</h3>
+            <button class="contact-close" onclick="toggleContact()">×</button>
         </div>
-    </section>
+        <div class="contact-content">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
 
-    <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>AttendanceTracker.</h3>
-                    <p>Smart attendance calculation for students</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#calculator">Calculator</a>
-                        <a href="#features">Features</a>
-                        <a href="#about">About</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Support</h4>
-                        <a href="#contact">Contact</a>
-                        <a href="#">Help</a>
-                        <a href="#">FAQ</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 AttendanceTracker. Made with ❤️ for students.</p>
-            </div>
-        </div>
-    </footer>
+    <button class="contact-toggle" onclick="toggleContact()">Contact</button>
 
     <script src="script.js"></script>
 </body>
