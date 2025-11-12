@@ -106,28 +106,45 @@ function resetCalculator() {
     document.getElementById('progressFill').style.width = '0%';
 }
 
-// Input validation
+// Input validation - using 'blur' for validation to allow full input
 document.querySelectorAll('input[type="number"]').forEach(input => {
+    // Only prevent negative on input
     input.addEventListener('input', function() {
+        // Allow empty value while typing
+        if (this.value === '' || this.value === '-') return;
+        
         // Prevent negative values
-        if (this.value < 0) this.value = 0;
+        if (parseFloat(this.value) < 0) {
+            this.value = '';
+        }
+    });
+    
+    // Validate on blur (when user leaves the field)
+    input.addEventListener('blur', function() {
+        const value = parseFloat(this.value);
         
         // Limit target percentage to 100
-        if (this.id === 'target' && this.value > 100) this.value = 100;
+        if (this.id === 'target') {
+            if (isNaN(value) || value < 0) {
+                this.value = '75';
+            } else if (value > 100) {
+                this.value = '100';
+            }
+        }
         
         // Prevent attended classes from exceeding total
         if (this.id === 'attended') {
-            const total = parseInt(document.getElementById('total').value) || 0;
-            if (total > 0 && this.value > total) {
+            const total = parseFloat(document.getElementById('total').value) || 0;
+            if (!isNaN(value) && total > 0 && value > total) {
                 this.value = total;
             }
         }
         
         // Update attended when total is changed and attended exceeds it
         if (this.id === 'total') {
-            const attended = parseInt(document.getElementById('attended').value) || 0;
-            if (attended > this.value) {
-                document.getElementById('attended').value = this.value;
+            const attended = parseFloat(document.getElementById('attended').value) || 0;
+            if (!isNaN(value) && value > 0 && attended > value) {
+                document.getElementById('attended').value = value;
             }
         }
     });
@@ -141,19 +158,5 @@ document.addEventListener('keypress', function(e) {
             calculateAttendance();
         }
     }
-});
-
-// Contact Window Functions
-function toggleContact() {
-    const contactWindow = document.getElementById('contactWindow');
-    contactWindow.classList.toggle('active');
-}
-
-// Contact form submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon.');
-    this.reset();
-    toggleContact();
 });
 
